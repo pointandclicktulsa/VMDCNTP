@@ -1,6 +1,8 @@
 ﻿#######
 # Script for setting up NTP on a fresh DC on a Hyper-V host you want to join to the domain.
 # To-do: Test on a fake DC, swap from "reg" to powershell if possible, same for w32tm
+# Improvements?: Change the while loop to have a wait of an hour or longer, and make it send
+#                an email to me if it has failed rather than checking every 10 seconds?
 #######
 
 # VM IC Partial disable (preserves checkpoint/backup restore time fix)
