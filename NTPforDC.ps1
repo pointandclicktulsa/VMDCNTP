@@ -5,6 +5,12 @@
 #                an email to me if it has failed rather than checking every 10 seconds?
 #######
 
+# Begin log file, this will be placed on the client the script is being run from, do not modify unless you want to disable logging
+$ErrorActionPreference="SilentlyContinue"
+Stop-Transcript | out-null
+$ErrorActionPreference = "Continue"
+Start-Transcript -path C:\NTP.txt -append
+
 # VM IC Partial disable (preserves checkpoint/backup restore time fix)
 reg add HKLM\SYSTEM\CurrentControlSet\Services\W32Time\TimeProviders\VMICTimeProvider /v Enabled /t reg_word /d 0
 
@@ -34,3 +40,6 @@ Start-Sleep -s 10
 }
 
 Write-Host "NTP is Properly configured!"
+
+# End log file
+Stop-Transcript
